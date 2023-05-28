@@ -1,6 +1,48 @@
 <?php
-    
+include_once('conexao.php');
+?>
 
+<?php
+$id = $_GET['id'];
+
+
+    $sql = "SELECT * FROM usuarios WHERE id = :id";
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($_POST['atualizar'])) {
+    
+        $nome = $_POST['nome'];
+        $endereco = $_POST['endereco'];
+        $bairro = $_POST['bairro'];
+        $cep = $_POST['cep'];
+        $cidade= $_POST['cidade'];
+        $estado = $_POST['estado'];
+    
+    
+        $sql = "UPDATE usuarios SET nome = :nome, endereco = :endereco, bairro = :bairro, cep = :cep, cidade = :cidade, estado = :estado WHERE id = :id";
+        $stmt = $PDO->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':endereco', $endereco);
+        $stmt->bindValue(':bairro', $bairro);
+        $stmt->bindValue(':cep', $cep);
+        $stmt->bindValue(':cidade', $cidade);
+        $stmt->bindValue(':estado', $estado);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+    
+        if ($stmt->rowCount() > 0) {
+
+        } else {
+            echo "Erro ao atualizar os dados.";
+        }
+    
+        header("Location: consultar.php");
+        exit();
+    }
+    
 
 ?>
 
@@ -36,32 +78,32 @@
         </div>
     </nav>
     <div class="itens">
-      <form  method="POST" action="consultar.php">
+      <form  method="POST" action="">
                   <h2>Cadastrar - Agendamento de Potencias Clientes</h2>
                   <p>Sistema utilizado para agendamento de serviços.</p>
                   <div class="mb-3">
                       <label for="nome" class="form-label">Nome:</label>
-                      <input type="text" class="form-control" name="nome" id="nome">
+                      <input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>" id="nome">
                   </div>
                   <div class="mb-3">
                       <label for="endereco" class="form-label">Endereço:</label>
-                      <input type="text" class="form-control" name="endereco" id="endereco">
+                      <input type="text" class="form-control" name="endereco" value="<?php echo $row['endereco']; ?>" id="endereco">
                   </div>
                   <div class="mb-3">
                       <label for="bairro" class="form-label">Bairro:</label>
-                      <input type="text" class="form-control" name="bairro" id="bairro">
+                      <input type="text" class="form-control" name="bairro" value="<?php echo $row['bairro']; ?>" id="bairro">
                   </div>
                   <div class="mb-3">
                       <label for="cep" class="form-label">CEP:</label>
-                      <input type="text" class="form-control" name="cep" id="cep">
+                      <input type="text" class="form-control" name="cep" value="<?php echo $row['cep']; ?>" id="cep">
                   </div>
                   <div class="mb-3">
                       <label for="cidade" class="form-label">Cidade:</label>
-                      <input type="text" class="form-control" name="cidade" id="cidade">
+                      <input type="text" class="form-control" name="cidade" value="<?php echo $row['cidade']; ?>" id="cidade">
                   </div>
                   <div class="mb-3">
                   <label for="select" class="form-label">Estado:</label>
-                  <select class="form-select" aria-label="select" name="estado" id="estado">
+                  <select class="form-select" aria-label="select" name="estado" value="<?php echo $row['estado']; ?>" id="estado">
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
@@ -92,7 +134,7 @@
                   </select>
                   </div>
                   <div class="mb-3">
-                      <input  class="btn btn-primary" type="submit" value="Cadastrar" name="cadastrar" id="cadastrar">
+                      <input  class="btn btn-primary" type="submit" value="Atualizar" name="atualizar" id="atualizar">
                   </div>
       </form>        
       </div>  
