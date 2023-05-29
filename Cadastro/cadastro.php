@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
+                <a class="nav-link active disabled" aria-current="page" href="#">Cadastrar</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link active" href="consultar.php">Consultar</a>
@@ -35,27 +35,27 @@
                   <p>Sistema utilizado para agendamento de serviços.</p>
                   <div class="mb-3">
                       <label for="nome" class="form-label">Nome:</label>
-                      <input type="text" class="form-control" name="nome" id="nome">
+                      <input type="text" class="form-control" name="nome" id="nome" required>
                   </div>
                   <div class="mb-3">
                       <label for="endereco" class="form-label">Endereço:</label>
-                      <input type="text" class="form-control" name="endereco" id="endereco">
+                      <input type="text" class="form-control" name="endereco" id="endereco" required>
                   </div>
                   <div class="mb-3">
                       <label for="bairro" class="form-label">Bairro:</label>
-                      <input type="text" class="form-control" name="bairro" id="bairro">
+                      <input type="text" class="form-control" name="bairro" id="bairro" required>
                   </div>
                   <div class="mb-3">
                       <label for="cep" class="form-label">CEP:</label>
-                      <input type="text" class="form-control" name="cep" id="cep">
+                      <input type="text" class="form-control" name="cep" id="cep" required>
                   </div>
                   <div class="mb-3">
                       <label for="cidade" class="form-label">Cidade:</label>
-                      <input type="text" class="form-control" name="cidade" id="cidade">
+                      <input type="text" class="form-control" name="cidade" id="cidade" required>
                   </div>
                   <div class="mb-3">
                   <label for="select" class="form-label">Estado:</label>
-                  <select class="form-select" aria-label="select" name="estado" id="estado">
+                  <select class="form-select" aria-label="select" name="estado" id="estado" required>
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>

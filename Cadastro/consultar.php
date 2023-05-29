@@ -27,7 +27,7 @@
                 <a class="nav-link active" aria-current="page" href="cadastro.php">Cadastrar</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link active" href="consultar.php">Consultar</a>
+                <a class="nav-link active disabled" href="consultar.php">Consultar</a>
                 </li>
             </ul>
             </div>
